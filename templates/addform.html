@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+<!-- {% block nav %}
+{% include "menu.html" %}
+{% endblock nav %} -->
+
+{% block content %}
+<div class="container addform mt-3 mb-3">
+    <form method="POST" class="forms">
+        {% csrf_token %}
+        <h2 class="text-center">Agregar Vehículo</h2>
+
+        <div class="form-group mb-2">
+            <label for="marca">Marca: </label>
+            <span class="form-control">{{ form.marca }}</span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="modelo">Modelo: </label>
+            <span class="form-control">{{ form.modelo }}</span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="serial_carroceria">Serial Carrocería: </label>
+            <span class="form-control">{{ form.serial_carroceria }}</span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="serial_motor">Serial Motor: </label>
+            <span class="form-control">{{ form.serial_motor }}</span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="categoria">Categoría: </label>
+            <span class="form-control">{{ form.categoria }}</span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="precio">Precio: </label>
+            <span class="form-control">
+                <div class="input-group-prepend">
+                    <div class="input-group-text" id="myNumber" oninput="formatNumber()">$ {{ form.precio }}</div>
+                </div>
+            </span>
+        </div>
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary mt-4 mb-2" value="Enviar">
+        </div>
+    </form>
+</div>
+{% endblock content %}

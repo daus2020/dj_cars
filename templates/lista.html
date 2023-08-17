@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-3" id="vehiculo-list">
+    <div class="title py-3">
+        <h2 class="text-center" id="list-title">Listado de Vehículos<span
+                class="fs-6 numberCircle">{{lista_vehiculos|length}}</span>
+        </h2>
+    </div>
+    {% if lista_vehiculos %}
+    <div class="table table-responsive table-borderless">
+        <table class="table table-hover  table-borderless text-center">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Serial Carrocería</th>
+                    <th>Serial Motor</th>
+                    <th>Categoría</th>
+                    <th>Precio $</th>
+                    <th>Condición de Precio</th>
+                </tr>
+            </thead>
+            <!-- Number of vehicles: {{ lista_vehiculos|length }} -->
+            {% for item in lista_vehiculos %}
+            <tbody class="table-group-divider">
+                <tr>
+                    <td>{{item.marca}}</td>
+                    <td>{{item.modelo}}</td>
+                    <td>{{item.serial_carroceria}}</td>
+                    <td>{{item.serial_motor}}</td>
+                    <td>{{item.categoria}}</td>
+                    <!-- <td>{{item.precio|ljust:8}}</td> -->
+                    <td>{{item.precio}}</td>
+                    <!-- <td>{{ "$"|ljust:8 }}{{item.precio}}</td> -->
+                    <td>
+                        {% if item.precio > 30000 %}
+                        <span class="text-info">Alto</span>
+                        {% elif item.precio > 10000 %}
+                        <span class="text-warning">Medio</span>
+                        {% elif item.precio <= 10000 %} <span class="text-danger">Bajo</span>
+                            {% else %} Valor inválido {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <h4 class="text-center mt-3 text-danger">
+        <span>
+            <i class="fa-solid fa-triangle-exclamation fa-beat"></i>
+        </span>
+        No hay vehículos ingresados
+        <span>
+            <i class="fa-solid fa-triangle-exclamation fa-beat"></i>
+        </span>
+        {% endif %}
+    </h4>
+</div>
+{% endblock content %}

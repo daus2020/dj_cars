@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dj_CARS</title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        {% bootstrap_messages %}
+        <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/ico_logo.ico' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            body {
+                background:
+                    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+                    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+                    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+                    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+                    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+                    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+                background-color: #131313;
+                background-size: 20px 20px;
+                color: aliceblue;
+                font-family: Cantarell, sans-serif;
+            }
+
+            h2,
+            th {
+                color: #f7920d !important;
+            }
+
+            #watermark {
+                top: 42%;
+                left: 50%;
+                left: calc(50% - 62px);
+                position: fixed;
+                z-index: 10;
+                /* opacity: 15%; */
+            }
+
+
+            @media only screen and (min-height: 590px) {
+                body {
+                    overflow-x: hidden;
+                    overflow-y: hidden;
+                }
+            }
+
+            @media only screen and (max-height: 589px) {
+                body {
+                    overflow-x: hidden;
+                }
+            }
+        </style>
+
+    </head>
+
+    <body class="d-flex flex-column vh-100">
+
+        {% include "menu.html" %}
+
+
+        <img src="{% static 'images/dj_CARS_logo.png' %}" alt="dj_CARS_logo watermark" id="watermark">
+        {% block content %}
+        {% endblock content %}
+
+
+        {% include "footer.html" %}
+
+
+    </body>
+
+</html>
